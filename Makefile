@@ -22,7 +22,7 @@ LIBDIR = ../../AVR-Programming-Library
 
 PROGRAMMER_TYPE = arduino
 # extra arguments to avrdude: baud rate, chip type, -F flag, etc.
-PROGRAMMER_ARGS = -P COM11
+PROGRAMMER_ARGS = -P COM3
 
 ##########------------------------------------------------------##########
 ##########                  Program Locations                   ##########
