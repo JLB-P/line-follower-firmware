@@ -4,7 +4,7 @@
 //Function To Initialize the ADC Module
 void adc_init()
 {
-	ADMUX=(1<<REFS0);	// For Aref=AVcc;
+	ADMUX=(1<<REFS0);	//define reference Aref=AVcc=5v;
 	ADCSRA=(1<<ADEN)|(1<<ADPS2)|(1<<ADPS1)|(1<<ADPS0);
 	//1) enable ADC
 	//2) Pre-scaling div factor = 128 to get 125 Khz of sampling
