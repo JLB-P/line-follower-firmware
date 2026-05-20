@@ -2,6 +2,8 @@
 #include <avr/interrupt.h>
 #include "motors.h"
 
+const uint8_t ROBO_SPEED = 100; //0-255 
+
 void motors_init()
 {
 	/*	set up pwm for speed control
@@ -14,10 +16,10 @@ void motors_init()
 	
 	/*Practical: pick 20–30 kHz unless your motor driver specifies otherwise.
 	* Always check the driver’s max switching frequency and current-sense bandwidth.
-	* freq_PWM = fclk/2xNxTOP = 16000000/(2X1X255) = 31.37255 Khz
-	* No prescaler (CS10=1)
+	* freq_PWM = fclk/2xNxTOP = 16000000/(2X256X255) = 122.54902 Hz
+	* prescaler N=256 (CS12=1)
 	*/
-	TCCR1B=(1<<CS10);
+	TCCR1B=(1<<CS12);
 
 	//Set the corresponding port pin to output
 	DDRB|=(1<<PB1); //OC1A pwm speed control for right motor
@@ -35,8 +37,7 @@ void motors_init()
 	| PD2	|	IN3	 |--> CW_DIR   | LEFT  |
 	| PD3	|	IN4	 |--> CC_DIR   |       |
 	|-------+--------+-------------+-------|*/
-	//OCR1A = 200;
- 	//OCR1B = 200;
+	
 }
 
 void motor_right(uint8_t dir,uint8_t speed) 
